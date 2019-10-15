@@ -59,6 +59,7 @@ class HumanPlayer < Player #la classe HumanPlayer(fille) hérite de la classe Pl
   def search_weapon
       new_weapon = rand(1..6) #niveau de la nouvelle arme compris entre 1 et 6
       puts "Tu as trouvé une arme de niveau #{new_weapon}"
+
       if new_weapon > @weapon_level # si la nouvelle arme est superieur à l'arme actuelle alors
          new_weapon = @weapon_level #
         puts " Gardes la !!!!!!!"
@@ -66,13 +67,28 @@ class HumanPlayer < Player #la classe HumanPlayer(fille) hérite de la classe Pl
       end
   end
 
-  # #def search_health_pack
-  #   health_pack = rand(1..6
-  #   if health_pack == 1
-  #     puts "Tu n'as rien trouvé..."
-  #   end
-  #
-  # end
+  def search_health_pack
+      health_pack = rand(1..6)
+      if health_pack == 1 # méthode if pour definir les conditions pour les packs de points de vie en fonction du rand
+
+      elsif health_pack > 1 && health_pack < 6
+      if @life_points >=50 # si le niveau de vie est déjà supérieur ou égal à 50, charger les 100 points
+          @life_points = 100
+      else
+        @life_points = @life_points + 50 # sinon, + 50 points au life points
+      end
+      puts "Bravo, tu as trouvé un pack de +50 points de vie !"
+
+    elsif health_pack == 6
+      if @life_points >=20 # si la vie est déjà supérieur ou égal à 20, + 100 points
+          @life_points = 100
+      else
+      @life_points = @life_points + 80 # sinon, + 80 points au niveau de vie actuel
+      end
+      puts "Waow, tu as trouvé un pack de +80 points de vie !"
+    end
+
+end
 
 
 end
